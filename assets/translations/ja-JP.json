@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Git"
+  },
+  "app_bar": {
+    "title": {
+      "home": "ホーム"
+    }
+  }
+}
