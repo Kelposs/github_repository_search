@@ -1,6 +1,5 @@
 import 'package:github_repository_search/src/export_box.dart';
 import 'package:flutter/material.dart';
-import 'package:github_repository_search/src/features/constraints/constants.dart';
 import 'package:github_repository_search/src/features/theme/domain/system_brightness.dart';
 import 'package:github_repository_search/src/utils/storage/app_pref_key.dart';
 
