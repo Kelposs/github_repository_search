@@ -1,4 +1,3 @@
-import 'package:github_repository_search/src/container/will_quit_app_scope.dart';
 import 'package:github_repository_search/src/routing/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -9,18 +8,6 @@ class AppRouter {
       default:
         return null;
     }
-  }
-
-  static Route<dynamic>? _buildRoute(
-    Widget child, {
-    RouteSettings? settings,
-    bool fullscreenDialog = false,
-  }) {
-    return MaterialPageRoute<dynamic>(
-      builder: (BuildContext context) => WillQuitAppScope(child: child),
-      settings: settings,
-      fullscreenDialog: fullscreenDialog,
-    );
   }
 
   static PageRouteBuilder<dynamic> _slidePageRouteBuilder(
