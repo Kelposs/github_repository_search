@@ -1,7 +1,6 @@
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:github_repository_search/src/export_box.dart';
-import 'package:github_repository_search/src/features/constraints/constants.dart';
 import 'package:github_repository_search/src/features/theme/data/theme_repository.dart';
 import 'package:github_repository_search/src/utils/dialog/sheet_with_observer_widget.dart';
 import 'package:flutter/cupertino.dart';
