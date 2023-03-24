@@ -82,4 +82,27 @@ class AppColor {
   static const Color darkShadowColor = Color(0xFF000000);
 
   static const Color transparentColor = Colors.transparent;
+
+  static const List<Color> containerColorsList = [
+    Color(0xFF8Fc1E3),
+    Color(0xFFC3073F),
+    Color(0xFF3AAFA9),
+    Color(0xFFF8E9A1),
+    Color(0xFFF76C6C),
+    Color(0xFFA8D0E6),
+    Color(0xFFAFD275),
+    Color(0xFFEE4C7C),
+    Color(0xFFFFCB9A),
+    Color(0xFFDA7B93),
+    Color(0xFF2E9CCA),
+    Color(0xFFCEBC81),
+    Color(0xFF77A6F7),
+    Color(0xFFFBE8A6),
+    Color(0xFFF4976C),
+    Color(0xFFB4DFE5),
+    Color(0xFFF3D250),
+    Color(0xFFF78888),
+    Color(0xFFFCE181),
+    Color(0xFFFFCB9A),
+  ];
 }

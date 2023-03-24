@@ -24,11 +24,13 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
           padding: EdgeInsets.only(top: 20.h),
           shrinkWrap: true,
           children: List.generate(10, (index) {
+            final backgroundColor = AppColor.containerColorsList[
+                index % AppColor.containerColorsList.length];
             //height 147.h
             return GestureDetector(
               onTap: () {},
               child: GitHubBox(
-                backgroundColor: AppColor.white,
+                backgroundColor: backgroundColor,
               ),
             );
           }),
