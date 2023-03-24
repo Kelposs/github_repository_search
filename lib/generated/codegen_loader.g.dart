@@ -20,7 +20,7 @@ class CodegenLoader extends AssetLoader{
   },
   "app_bar": {
     "title": {
-      "home": "ホーム"
+      "hintText": "レポジトリー名を入力してください"
     }
   }
 };
