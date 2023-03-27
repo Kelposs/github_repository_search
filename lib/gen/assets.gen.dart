@@ -58,6 +58,14 @@ class $AssetsImagesIconGen {
   SvgGenImage get iconIssuesLight =>
       const SvgGenImage('assets/images/icon/icon_issues_light.svg');
 
+  /// File path: assets/images/icon/icon_language_dark.svg
+  SvgGenImage get iconLanguageDark =>
+      const SvgGenImage('assets/images/icon/icon_language_dark.svg');
+
+  /// File path: assets/images/icon/icon_language_light.svg
+  SvgGenImage get iconLanguageLight =>
+      const SvgGenImage('assets/images/icon/icon_language_light.svg');
+
   /// File path: assets/images/icon/icon_star_dark.svg
   SvgGenImage get iconStarDark =>
       const SvgGenImage('assets/images/icon/icon_star_dark.svg');
@@ -83,6 +91,8 @@ class $AssetsImagesIconGen {
         iconGithubLight,
         iconIssuesDark,
         iconIssuesLight,
+        iconLanguageDark,
+        iconLanguageLight,
         iconStarDark,
         iconStarLight,
         iconWatchersDark,
