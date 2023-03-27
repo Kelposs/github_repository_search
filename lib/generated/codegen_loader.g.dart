@@ -22,6 +22,22 @@ class CodegenLoader extends AssetLoader{
     "title": {
       "hintText": "レポジトリー名を入力してください"
     }
+  },
+  "home_screen": {
+    "github_tile": {
+      "language": {
+        "provided": "言語",
+        "null": "N/A"
+      },
+      "description": {
+        "provided": "説明文",
+        "null": "説明文はありません"
+      },
+      "stars": "Stars",
+      "watchers": "Watchers",
+      "issues": "Issues",
+      "fork": "Forks"
+    }
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ja_JP": ja_JP};
