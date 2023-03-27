@@ -5,8 +5,8 @@ import 'package:github_repository_search/src/utils/service/rest_api/api_service.
 class GitHubRepository {
   final ApiService service = ApiService.create();
 
-  Future<List<GitHubTile>> getRepo() async {
-    final Response response = await service.getRepo("Flutter");
+  Future<List<GitHubTile>> getRepo(String repoText) async {
+    final Response response = await service.getRepo(repoText);
     if (response.isSuccessful) {
       final responseBodyJson = response.body as Map<String, dynamic>;
       // jsonのパース
