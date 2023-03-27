@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:github_repository_search/src/export_box.dart';
+import 'package:github_repository_search/src/features/home/presentation/home_screen.dart';
+
+final GlobalKey<NavigatorState> navigatorKey =
+    GlobalKey(debugLabel: 'Global Navigator');
 
 class App extends ConsumerStatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -18,6 +22,7 @@ class _AppState extends ConsumerState<App> {
       splitScreenMode: false,
       builder: (context, child) {
         return MaterialApp(
+          navigatorKey: navigatorKey,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkColorTheme,
           themeMode: ref.watch(themeModeProvider),
@@ -36,7 +41,7 @@ class _AppState extends ConsumerState<App> {
           navigatorObservers: [routeObserver],
         );
       },
-      child: Container(),
+      child: const HomeScreen(),
     );
   }
 }

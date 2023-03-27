@@ -4,6 +4,7 @@ import 'package:github_repository_search/src/export_box.dart';
 import 'package:github_repository_search/src/features/home/home_app_bar/data/app_bar_text_controller.dart';
 import 'package:github_repository_search/src/features/home/home_body/components/github_box.dart';
 import 'package:github_repository_search/src/features/home/home_body/data/home_body_provider.dart';
+import 'package:github_repository_search/src/utils/error/sunabako_exception.dart';
 
 class HomeBody extends ConsumerStatefulWidget {
   const HomeBody({super.key});
@@ -22,7 +23,14 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     return gitHubRepository.when(
       loading: () =>
           const Expanded(child: Center(child: CircularProgressIndicator())),
-      error: (error, stackTrace) => Text(error.toString()),
+      error: (e, stackTrace) {
+        if (e is MyAppException) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            e.handle(null);
+          });
+        }
+        return const SizedBox.shrink();
+      },
       data: (githubTiles) {
         return Expanded(
           child: Padding(
@@ -41,6 +49,9 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
                 //height 147.h
                 return GestureDetector(
                   onTap: () {
+                    //キーボードをunFocus
+                    FocusManager.instance.primaryFocus?.unfocus();
+                    //white spaces settei
                     GitHubBottomSheet.show(
                         context, backgroundColor, githubTiles[index]);
                   },
