@@ -21,11 +21,13 @@ class TextControllerRepository extends StateNotifier<TextEditingController> {
   }
 
   void onChange(String text) {
-    state.value = TextEditingValue(
+    final temp = TextEditingController();
+    temp.value = TextEditingValue(
       text: text,
       selection: TextSelection.fromPosition(
         TextPosition(offset: text.length),
       ),
     );
+    state = temp;
   }
 }

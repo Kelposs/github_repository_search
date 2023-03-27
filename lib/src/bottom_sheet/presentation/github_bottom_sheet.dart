@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:github_repository_search/gen/assets.gen.dart';
+import 'package:github_repository_search/src/bottom_sheet/data/model/enum/github_information_type.dart';
 import 'package:github_repository_search/src/export_box.dart';
+import 'package:github_repository_search/src/features/github/data/domain/github_tile.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class GitHubBottomSheet {
-  static show(
-    BuildContext context,
-    Color background,
-  ) async {
+  static show(BuildContext context, Color background, GitHubTile tile) async {
     await showMaterialModalBottomSheet<int>(
       backgroundColor: AppColor.black,
       context: context,
@@ -21,9 +19,12 @@ class GitHubBottomSheet {
                 color: background,
               ),
               child: Center(
-                child: SvgPicture.asset(
-                  Assets.images.icon.iconGithubGrey.path,
-                  height: 75.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(45.0),
+                  child: Image.network(
+                    tile.avatarUrl,
+                    height: 75.h,
+                  ),
                 ),
               ),
             ),
@@ -48,7 +49,7 @@ class GitHubBottomSheet {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Author name",
+                        tile.author,
                         style: Constants.kDefaultTextStyle.copyWith(
                             fontSize: 22.sp,
                             fontWeight: FontWeight.w600,
@@ -57,7 +58,7 @@ class GitHubBottomSheet {
                       ),
                       Gap(10.h),
                       Text(
-                        "Project Name",
+                        tile.name,
                         style: Constants.kDefaultTextStyle.copyWith(
                             fontSize: 25.sp,
                             fontWeight: FontWeight.bold,
@@ -65,7 +66,7 @@ class GitHubBottomSheet {
                       ),
                       Gap(15.h),
                       Text(
-                        "Short Desription\nasdsa\nasaasdsadsadsadsadsad",
+                        tile.description,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: Constants.kDefaultTextStyle.copyWith(
@@ -83,7 +84,7 @@ class GitHubBottomSheet {
               child: ListView.builder(
                 itemCount: 1,
                 itemBuilder: (BuildContext context, int index) {
-                  return _buildCarousel(context, index);
+                  return _buildCarousel(context, index, tile);
                 },
               ),
             ),
@@ -94,17 +95,18 @@ class GitHubBottomSheet {
   }
 }
 
-Widget _buildCarousel(BuildContext context, int carouselIndex) {
+Widget _buildCarousel(
+    BuildContext context, int carouselIndex, GitHubTile tile) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     children: <Widget>[
       SizedBox(
         height: 280.h,
         child: PageView.builder(
-          itemCount: 5,
+          itemCount: InformationType.values.length,
           controller: PageController(viewportFraction: 1),
           itemBuilder: (BuildContext context, int itemIndex) {
-            return _buildCarouselItem(context, itemIndex);
+            return _buildCarouselItem(context, itemIndex, tile);
           },
         ),
       )
@@ -112,21 +114,8 @@ Widget _buildCarousel(BuildContext context, int carouselIndex) {
   );
 }
 
-Widget _buildCarouselItem(BuildContext context, int itemIndex) {
-  final List<String> temp = [
-    Assets.images.icon.iconLanguageDark.path,
-    Assets.images.icon.iconStarDark.path,
-    Assets.images.icon.iconWatchersDark.path,
-    Assets.images.icon.iconForkDark.path,
-    Assets.images.icon.iconIssuesDark.path
-  ];
-  final List<String> temp2 = [
-    "Language",
-    "Stars",
-    "Watchers",
-    "Fork",
-    "Issues"
-  ];
+Widget _buildCarouselItem(
+    BuildContext context, int itemIndex, GitHubTile tile) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 8.w),
     child: Container(
@@ -141,15 +130,28 @@ Widget _buildCarouselItem(BuildContext context, int itemIndex) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            temp[itemIndex],
+            InformationType.values[itemIndex].informationType.keys.first,
             height: 70.h,
           ),
           Gap(15.h),
           Text(
-            temp2[itemIndex] + "：" + "1234",
+            "${InformationType.values[itemIndex].informationType.values.first}：${(() {
+              switch (InformationType.values[itemIndex]) {
+                case InformationType.language:
+                  return tile.language;
+                case InformationType.stars:
+                  return tile.starCount.toString();
+                case InformationType.forks:
+                  return tile.forks.toString();
+                case InformationType.issues:
+                  return tile.issues.toString();
+                case InformationType.watchers:
+                  return tile.watchers.toString();
+              }
+            })()}",
             style: Constants.kDefaultTextStyle
                 .copyWith(fontSize: 30.sp, fontWeight: FontWeight.bold),
-          )
+          ),
         ],
       ),
     ),

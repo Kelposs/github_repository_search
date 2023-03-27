@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
 
   Widget changeWidget(
       bool wasTapped, TextControllerRepository searchRepository) {
+    Timer? debounce;
     return Stack(
       children: [
         AnimatedPositioned(
@@ -61,6 +63,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
           child: SizedBox(
             width: wasTapped ? 288.w : 375.w - 32.w,
             child: TextField(
+              autofocus: false,
               controller: searchRepository.takeController(),
               onTap: () {
                 ref.read(appBarRepository.notifier).makeTapped();
@@ -81,7 +84,10 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
                 ),
               ),
               onChanged: (value) {
-                searchRepository.onChange(value);
+                if (debounce?.isActive ?? false) debounce!.cancel();
+                debounce = Timer(const Duration(milliseconds: 500), () {
+                  searchRepository.onChange(value.trim());
+                });
               },
             ),
           ),

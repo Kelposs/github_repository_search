@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:github_repository_search/gen/assets.gen.dart';
 import 'package:github_repository_search/src/export_box.dart';
+import 'package:github_repository_search/src/features/github/data/domain/github_tile.dart';
 
 class GitHubBox extends ConsumerWidget {
   final Color backgroundColor;
-  const GitHubBox({
-    Key? key,
-    required this.backgroundColor,
-  }) : super(key: key);
+  final GitHubTile tile;
+  const GitHubBox({Key? key, required this.backgroundColor, required this.tile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,12 +19,15 @@ class GitHubBox extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
+          SizedBox(
             height: 70.h,
             child: Center(
-              child: SvgPicture.asset(
-                Assets.images.icon.iconGithubGrey.path,
-                height: 35.h,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: Image.network(
+                  tile.avatarUrl,
+                  height: 35.h,
+                ),
               ),
             ),
           ),
@@ -43,7 +45,7 @@ class GitHubBox extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Lorem Ipsum",
+                      tile.author,
                       style: Constants.kDefaultTextStyle.copyWith(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w600,
@@ -52,7 +54,7 @@ class GitHubBox extends ConsumerWidget {
                     ),
                     Gap(5.h),
                     Text(
-                      "Lorem Ipsum",
+                      tile.name,
                       style: Constants.kDefaultTextStyle.copyWith(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
@@ -60,7 +62,7 @@ class GitHubBox extends ConsumerWidget {
                     ),
                     Gap(8.h),
                     Text(
-                      "Short Desription",
+                      tile.description,
                       style: Constants.kDefaultTextStyle.copyWith(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
