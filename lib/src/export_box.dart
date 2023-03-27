@@ -1,7 +1,8 @@
 export 'package:easy_localization/easy_localization.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
-// export 'package:flutter_svg/flutter_svg.dart';
+export 'package:flutter_svg/flutter_svg.dart';
 export 'package:gap/gap.dart';
+export 'package:github_repository_search/src/components/constraints/constants.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export "package:github_repository_search/generated/codegen_loader.g.dart";
 export 'package:github_repository_search/generated/locale_keys.g.dart';
