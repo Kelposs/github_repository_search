@@ -2,7 +2,6 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:github_repository_search/src/export_box.dart';
 import 'package:github_repository_search/src/features/theme/data/theme_repository.dart';
-import 'package:github_repository_search/src/utils/dialog/sheet_with_observer_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -343,58 +342,4 @@ Future<void> showToast(
     gravity: ToastGravity.BOTTOM,
     toastDuration: const Duration(seconds: 2),
   );
-}
-
-Future<void> showSessionTimeoutSlideDialog(
-  BuildContext context,
-  WidgetRef ref,
-  bool isAuto,
-) async {
-  if (ref.read(isShowBottomSheet)) {
-    ref.read(isShowBottomSheet.notifier).state = false;
-    Navigator.pop(context);
-  }
-
-  if (_isErrorDialogDisplay) {
-    return;
-  }
-
-  return showPlatformDialog<bool>(
-    context: context,
-    builder: (_) => WillPopScope(
-      child: PlatformAlertDialog(
-        title: Text(
-          "",
-          // LocaleKeys.dialog_title_error.tr()
-        ),
-        content: Text(
-          isAuto
-              ? "LocaleKeys.apiError_system_sessionTimeoutWhenAutoLogin.tr()"
-              : "LocaleKeys.apiError_system_sessionTimeout.tr()",
-        ),
-        actions: <Widget>[
-          Builder(
-            builder: (context) {
-              return PlatformDialogAction(
-                  child: PlatformText(
-                    "LocaleKeys.dialog_button_close.tr()",
-                    style: Constants.kDefaultTextStyle.copyWith(
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  onPressed: () async {
-                    _isErrorDialogDisplay = false;
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      AppRoutes.launch,
-                      // AppRoutes.signIn,
-                      (route) => false,
-                    );
-                  });
-            },
-          ),
-        ],
-      ),
-      onWillPop: () async => false,
-    ),
-  ).then((value) => _isErrorDialogDisplay = false);
 }
