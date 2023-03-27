@@ -9,7 +9,6 @@ final homeBodyProvider =
   final textController = ref.watch(textControllerRepository);
 
   if (textController.text.isEmpty) return [];
-  await Future.delayed(const Duration(seconds: 1));
   try {
     final ApiService service = ApiService.create();
     final Response response = await service.getRepo(textController.text);
