@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:github_repository_search/gen/assets.gen.dart';
+import 'package:github_repository_search/src/features/home/home_app_bar/data/app_bar_text_controller.dart';
 import 'package:github_repository_search/src/features/home/home_app_bar/data/home_app_bar_repository.dart';
 import 'package:github_repository_search/src/export_box.dart';
 
@@ -19,6 +19,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     final wasTapped = ref.watch(appBarRepository).wasTapped;
+    final searchRepository = ref.watch(textControllerRepository.notifier);
 
     return AnimatedContainer(
         height: wasTapped ? 90.h : bodyHeight,
@@ -35,11 +36,12 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
         duration: const Duration(seconds: 1),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: changeWidget(wasTapped),
+          child: changeWidget(wasTapped, searchRepository),
         ));
   }
 
-  Widget changeWidget(bool wasTapped) {
+  Widget changeWidget(
+      bool wasTapped, TextControllerRepository searchRepository) {
     return Stack(
       children: [
         AnimatedPositioned(
@@ -59,6 +61,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
           child: SizedBox(
             width: wasTapped ? 288.w : 375.w - 32.w,
             child: TextField(
+              controller: searchRepository.takeController(),
               onTap: () {
                 ref.read(appBarRepository.notifier).makeTapped();
               },
@@ -78,7 +81,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
                 ),
               ),
               onChanged: (value) {
-                // do something
+                searchRepository.onChange(value);
               },
             ),
           ),
