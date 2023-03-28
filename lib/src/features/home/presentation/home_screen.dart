@@ -3,14 +3,14 @@ import 'package:github_repository_search/src/features/home/home_app_bar/presenta
 import 'package:github_repository_search/src/export_box.dart';
 import 'package:github_repository_search/src/features/home/home_body/presentation/home_body.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

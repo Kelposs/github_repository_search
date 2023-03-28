@@ -38,6 +38,23 @@ class CodegenLoader extends AssetLoader{
       "issues": "Issues",
       "fork": "Forks"
     }
+  },
+  "errors": {
+    "dialog": "エラー",
+    "button": {
+      "ok": "OK",
+      "yes": "はい",
+      "no": "いいえ",
+      "reload": "再読み込み",
+      "cancel": "キャンセル",
+      "close": "閉じる"
+    },
+    "not_modified": "要求されたコンテンツは前回送信以降更新されていない。",
+    "validation_failed": "サーバー側がリクエストを理解しているにもかかわらず、\n処理ができない。",
+    "service_unavailable": "サービスが一時的に利用不可。",
+    "offline": "インターネット接続を確認してください。",
+    "exceed": "APIコールの上限を超えました。\n少々お待ちください。",
+    "undefined": "エラーが発生しました。\nしばらく時間をおいてから再度お試し下さい。"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ja_JP": ja_JP};
