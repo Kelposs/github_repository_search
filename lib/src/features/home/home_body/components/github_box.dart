@@ -3,9 +3,14 @@ import 'package:github_repository_search/src/export_box.dart';
 import 'package:github_repository_search/src/features/github/data/domain/github_tile.dart';
 
 class GitHubBox extends ConsumerWidget {
+  final bool isDark;
   final Color backgroundColor;
   final GitHubTile tile;
-  const GitHubBox({Key? key, required this.backgroundColor, required this.tile})
+  const GitHubBox(
+      {Key? key,
+      required this.isDark,
+      required this.backgroundColor,
+      required this.tile})
       : super(key: key);
 
   @override
@@ -58,14 +63,16 @@ class GitHubBox extends ConsumerWidget {
                       style: Constants.kDefaultTextStyle.copyWith(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
+                          color: AppColor.black,
                           overflow: TextOverflow.ellipsis),
                     ),
-                    Gap(8.h),
+                    Gap(4.h),
                     Text(
                       tile.description,
                       style: Constants.kDefaultTextStyle.copyWith(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
+                          color: AppColor.black,
                           overflow: TextOverflow.ellipsis),
                     ),
                   ],
