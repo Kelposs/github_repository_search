@@ -25,6 +25,7 @@ class _$ApiService extends ApiService {
       $url,
       client.baseUrl,
     );
+
     return client.send<dynamic, dynamic>($request);
   }
 }

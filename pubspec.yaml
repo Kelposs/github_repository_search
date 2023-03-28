@@ -24,6 +24,9 @@ dependencies:
   flutter_svg: ^1.0.3
   freezed_annotation: ^2.2.0
   modal_bottom_sheet: ^2.1.2
+  analyzer_plugin: ^0.11.2
+  linter: ^1.30.0
+
   
   
 
@@ -31,9 +34,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^2.3.3
-  flutter_lints: ^2.0.0
   chopper_generator: ^6.0.0
   freezed: ^2.3.2
+  dart_code_metrics: ^5.7.0
+  flutter_lints: ^2.0.0
   
 flutter_gen:
   output: lib/gen/

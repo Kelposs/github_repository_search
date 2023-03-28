@@ -21,7 +21,10 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final isDark = ref.watch(themeRepoProvider).isDarkMode;
 
     if (textController.text.isEmpty) return Container();
-    final gitHubRepository = ref.watch(homeBodyProvider);
+    final gitHubRepository = ref.watch(
+      homeBodyProvider,
+    );
+
     return gitHubRepository.when(
       loading: () =>
           const Expanded(child: Center(child: CircularProgressIndicator())),
@@ -31,6 +34,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
             e.handle(null);
           });
         }
+
         return const SizedBox.shrink();
       },
       data: (githubTiles) {

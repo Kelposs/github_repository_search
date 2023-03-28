@@ -100,8 +100,11 @@ class AppException implements Exception {
   final int? networkStatusCode;
   final String? operationName;
 
-  factory AppException.apiError(String code, String message,
-      {String? operationName}) {
+  factory AppException.apiError(
+    String code,
+    String message, {
+    String? operationName,
+  }) {
     return AppException(
       code: code,
       message: message,

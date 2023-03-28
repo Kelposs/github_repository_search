@@ -10,6 +10,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(themeRepoProvider).isDarkMode;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: isDark ? AppColor.black : AppColor.lightPrimaryColor,
