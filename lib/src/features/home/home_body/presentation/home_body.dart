@@ -4,6 +4,7 @@ import 'package:github_repository_search/src/export_box.dart';
 import 'package:github_repository_search/src/features/home/home_app_bar/data/app_bar_text_controller.dart';
 import 'package:github_repository_search/src/features/home/home_body/components/github_box.dart';
 import 'package:github_repository_search/src/features/home/home_body/data/home_body_provider.dart';
+import 'package:github_repository_search/src/features/theme/data/theme_repository.dart';
 import 'package:github_repository_search/src/utils/error/sunabako_exception.dart';
 
 class HomeBody extends ConsumerStatefulWidget {
@@ -17,6 +18,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
   @override
   Widget build(BuildContext context) {
     final textController = ref.watch(textControllerRepository);
+    final isDark = ref.watch(themeRepoProvider).isDarkMode;
 
     if (textController.text.isEmpty) return Container();
     final gitHubRepository = ref.watch(homeBodyProvider);
@@ -51,11 +53,11 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
                   onTap: () {
                     //キーボードをunFocus
                     FocusManager.instance.primaryFocus?.unfocus();
-                    //white spaces settei
                     GitHubBottomSheet.show(
-                        context, backgroundColor, githubTiles[index]);
+                        context, backgroundColor, githubTiles[index], isDark);
                   },
                   child: GitHubBox(
+                    isDark: isDark,
                     backgroundColor: backgroundColor,
                     tile: githubTiles[index],
                   ),
