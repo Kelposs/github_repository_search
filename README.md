@@ -1,10 +1,12 @@
-# github_repository_search
+# GitHub Repository Search (Flutter)
 
-A new Flutter project.
+This is a simple Flutter application that allows you to search for repositories on GitHub based on given keyword. You can search for repositories based on keywords and know it's language, number of stars, and more. The application makes use of the GitHub REST API to retrieve search results.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+### Light Mode
+
+### Dark Mode
 
 A few resources to get you started if this is your first Flutter project:
 
