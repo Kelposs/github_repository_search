@@ -28,5 +28,8 @@ git clone https://github.com/Kelposs/github_repository_search.git
 2. Enter your search keyword in the input fields.
 3. View the search results and click on a repository to view more details.
 
+## Caution
+Application works for Flutter ver 3.3.10
+
 ## Contributions
 Contributions are welcome! If you have any bug reports, feature requests, or pull requests, please open an issue or submit a pull request on the GitHub repository.
