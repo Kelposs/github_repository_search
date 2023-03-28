@@ -52,13 +52,18 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
               children: List.generate(githubTiles.length, (index) {
                 final backgroundColor = AppColor.containerColorsList[
                     index % AppColor.containerColorsList.length];
+
                 //height 147.h
                 return GestureDetector(
                   onTap: () {
                     //キーボードをunFocus
                     FocusManager.instance.primaryFocus?.unfocus();
                     GitHubBottomSheet.show(
-                        context, backgroundColor, githubTiles[index], isDark);
+                      context,
+                      backgroundColor,
+                      githubTiles[index],
+                      isDark,
+                    );
                   },
                   child: GitHubBox(
                     isDark: isDark,
