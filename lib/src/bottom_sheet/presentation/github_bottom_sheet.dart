@@ -5,8 +5,12 @@ import 'package:github_repository_search/src/features/github/data/domain/github_
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class GitHubBottomSheet {
-  static show(BuildContext context, Color background, GitHubTile tile,
-      bool isDark) async {
+  static show(
+    BuildContext context,
+    Color background,
+    GitHubTile tile,
+    bool isDark,
+  ) async {
     await showMaterialModalBottomSheet<int>(
       backgroundColor:
           isDark ? AppColor.darkShadowColor : AppColor.lightPrimaryColor,
@@ -34,15 +38,17 @@ class GitHubBottomSheet {
               decoration: BoxDecoration(
                 color: isDark ? AppColor.black : AppColor.white,
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15.r),
-                    bottomRight: Radius.circular(15.r)),
+                  bottomLeft: Radius.circular(15.r),
+                  bottomRight: Radius.circular(15.r),
+                ),
               ),
               child: Container(
                 decoration: BoxDecoration(
                   color: isDark ? AppColor.black : AppColor.white,
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25.r),
-                      bottomRight: Radius.circular(25.r)),
+                    bottomLeft: Radius.circular(25.r),
+                    bottomRight: Radius.circular(25.r),
+                  ),
                 ),
                 child: Padding(
                   padding:
@@ -53,19 +59,21 @@ class GitHubBottomSheet {
                       Text(
                         tile.author,
                         style: Constants.kDefaultTextStyle.copyWith(
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w600,
-                            color: background,
-                            overflow: TextOverflow.ellipsis),
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600,
+                          color: background,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       Gap(10.h),
                       Text(
                         tile.name,
                         style: Constants.kDefaultTextStyle.copyWith(
-                            fontSize: 25.sp,
-                            color: isDark ? AppColor.white : AppColor.black,
-                            fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis),
+                          fontSize: 25.sp,
+                          color: isDark ? AppColor.white : AppColor.black,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       Gap(15.h),
                       Text(
@@ -73,10 +81,11 @@ class GitHubBottomSheet {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: Constants.kDefaultTextStyle.copyWith(
-                            fontSize: 16.sp,
-                            color: isDark ? AppColor.white : AppColor.black,
-                            fontWeight: FontWeight.normal,
-                            overflow: TextOverflow.ellipsis),
+                          fontSize: 16.sp,
+                          color: isDark ? AppColor.white : AppColor.black,
+                          fontWeight: FontWeight.normal,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
@@ -100,7 +109,11 @@ class GitHubBottomSheet {
 }
 
 Widget _buildCarousel(
-    BuildContext context, int carouselIndex, GitHubTile tile, bool isDark) {
+  BuildContext context,
+  int carouselIndex,
+  GitHubTile tile,
+  bool isDark,
+) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     children: <Widget>[
@@ -113,13 +126,17 @@ Widget _buildCarousel(
             return _buildCarouselItem(context, itemIndex, tile, isDark);
           },
         ),
-      )
+      ),
     ],
   );
 }
 
 Widget _buildCarouselItem(
-    BuildContext context, int itemIndex, GitHubTile tile, bool isDark) {
+  BuildContext context,
+  int itemIndex,
+  GitHubTile tile,
+  bool isDark,
+) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 8.w),
     child: Container(

@@ -25,27 +25,33 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
     final searchRepository = ref.watch(textControllerRepository.notifier);
 
     return AnimatedContainer(
-        height: wasTapped ? 90.h : bodyHeight,
-        width: 375.w,
-        curve: Curves.fastOutSlowIn,
-        decoration: BoxDecoration(
-          color: isDark ? AppColor.darkShadowColor : AppColor.white,
-          borderRadius: wasTapped
-              ? BorderRadius.only(
-                  bottomLeft: Radius.circular(15.r),
-                  bottomRight: Radius.circular(15.r))
-              : BorderRadius.circular(0.r),
-        ),
-        duration: const Duration(seconds: 1),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: changeWidget(isDark, wasTapped, searchRepository),
-        ));
+      height: wasTapped ? 90.h : bodyHeight,
+      width: 375.w,
+      curve: Curves.fastOutSlowIn,
+      decoration: BoxDecoration(
+        color: isDark ? AppColor.darkShadowColor : AppColor.white,
+        borderRadius: wasTapped
+            ? BorderRadius.only(
+                bottomLeft: Radius.circular(15.r),
+                bottomRight: Radius.circular(15.r),
+              )
+            : BorderRadius.circular(0.r),
+      ),
+      duration: const Duration(seconds: 1),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: changeWidget(isDark, wasTapped, searchRepository),
+      ),
+    );
   }
 
   Widget changeWidget(
-      bool isDark, bool wasTapped, TextControllerRepository searchRepository) {
+    bool isDark,
+    bool wasTapped,
+    TextControllerRepository searchRepository,
+  ) {
     Timer? debounce;
+
     return Stack(
       children: [
         AnimatedPositioned(
@@ -74,34 +80,33 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
               },
               style: TextStyle(color: isDark ? AppColor.white : AppColor.black),
               decoration: InputDecoration(
-                  hintText: LocaleKeys.app_bar_title_hintText.tr(),
-                  hintStyle: TextStyle(
-                      color: isDark
-                          ? AppColor.darkTextGrey1
-                          : AppColor.lightTextGrey1),
-                  filled: true,
-                  fillColor:
-                      isDark ? AppColor.black : AppColor.lightTextFieldBg,
-                  contentPadding: const EdgeInsets.all(15),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(
-                          color: isDark
-                              ? AppColor.black
-                              : AppColor.lightTextFieldBg)),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(
-                        color: isDark
-                            ? AppColor.black
-                            : AppColor.lightTextFieldBg),
+                hintText: LocaleKeys.app_bar_title_hintText.tr(),
+                hintStyle: TextStyle(
+                  color:
+                      isDark ? AppColor.darkTextGrey1 : AppColor.lightTextGrey1,
+                ),
+                filled: true,
+                fillColor: isDark ? AppColor.black : AppColor.lightTextFieldBg,
+                contentPadding: const EdgeInsets.all(15),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.r),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColor.black : AppColor.lightTextFieldBg,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(
-                          color: isDark
-                              ? AppColor.black
-                              : AppColor.lightTextFieldBg))),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.r),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColor.black : AppColor.lightTextFieldBg,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.r),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColor.black : AppColor.lightTextFieldBg,
+                  ),
+                ),
+              ),
               onChanged: (value) {
                 if (debounce?.isActive ?? false) debounce!.cancel();
                 debounce = Timer(const Duration(milliseconds: 500), () {

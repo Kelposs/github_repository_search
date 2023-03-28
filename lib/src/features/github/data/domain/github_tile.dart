@@ -29,17 +29,18 @@ class GitHubTile {
     return [
       for (var item in itemList)
         GitHubTile(
-            author: item['owner']["login"],
-            avatarUrl: item['owner']['avatar_url'],
-            name: item['name'],
-            description: item['description'] ??
-                LocaleKeys.home_screen_github_tile_description_null.tr(),
-            starCount: item['stargazers_count'],
-            forks: item['forks_count'],
-            issues: item['open_issues_count'],
-            language: item['language'] ??
-                LocaleKeys.home_screen_github_tile_language_null.tr(),
-            watchers: item["watchers_count"])
+          author: item['owner']["login"],
+          avatarUrl: item['owner']['avatar_url'],
+          name: item['name'],
+          description: item['description'] ??
+              LocaleKeys.home_screen_github_tile_description_null.tr(),
+          starCount: item['stargazers_count'],
+          forks: item['forks_count'],
+          issues: item['open_issues_count'],
+          language: item['language'] ??
+              LocaleKeys.home_screen_github_tile_language_null.tr(),
+          watchers: item["watchers_count"],
+        ),
     ];
   }
 }

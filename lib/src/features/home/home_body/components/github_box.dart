@@ -6,12 +6,12 @@ class GitHubBox extends ConsumerWidget {
   final bool isDark;
   final Color backgroundColor;
   final GitHubTile tile;
-  const GitHubBox(
-      {Key? key,
-      required this.isDark,
-      required this.backgroundColor,
-      required this.tile})
-      : super(key: key);
+  const GitHubBox({
+    Key? key,
+    required this.isDark,
+    required this.backgroundColor,
+    required this.tile,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,8 +41,9 @@ class GitHubBox extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: AppColor.white,
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25.r),
-                    bottomRight: Radius.circular(25.r)),
+                  bottomLeft: Radius.circular(25.r),
+                  bottomRight: Radius.circular(25.r),
+                ),
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
@@ -52,28 +53,31 @@ class GitHubBox extends ConsumerWidget {
                     Text(
                       tile.author,
                       style: Constants.kDefaultTextStyle.copyWith(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600,
-                          color: backgroundColor,
-                          overflow: TextOverflow.ellipsis),
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w600,
+                        color: backgroundColor,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     Gap(5.h),
                     Text(
                       tile.name,
                       style: Constants.kDefaultTextStyle.copyWith(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.black,
-                          overflow: TextOverflow.ellipsis),
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.black,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     Gap(4.h),
                     Text(
                       tile.description,
                       style: Constants.kDefaultTextStyle.copyWith(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.normal,
-                          color: AppColor.black,
-                          overflow: TextOverflow.ellipsis),
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.normal,
+                        color: AppColor.black,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ],
                 ),

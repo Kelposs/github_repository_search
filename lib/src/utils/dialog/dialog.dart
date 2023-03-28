@@ -25,8 +25,7 @@ Future<void> showErrorDialog(
             builder: (context) {
               return PlatformDialogAction(
                 child: PlatformText(
-                  "xxxx",
-                  // LocaleKeys.dialog_button_ok.tr(),
+                  LocaleKeys.errors_button_ok.tr(),
                   style: Constants.kDefaultTextStyle.copyWith(
                     color: AppColor.primaryColor,
                   ),

@@ -21,7 +21,10 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final isDark = ref.watch(themeRepoProvider).isDarkMode;
 
     if (textController.text.isEmpty) return Container();
-    final gitHubRepository = ref.watch(homeBodyProvider);
+    final gitHubRepository = ref.watch(
+      homeBodyProvider,
+    );
+
     return gitHubRepository.when(
       loading: () =>
           const Expanded(child: Center(child: CircularProgressIndicator())),
@@ -31,6 +34,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
             e.handle(null);
           });
         }
+
         return const SizedBox.shrink();
       },
       data: (githubTiles) {
@@ -48,13 +52,18 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
               children: List.generate(githubTiles.length, (index) {
                 final backgroundColor = AppColor.containerColorsList[
                     index % AppColor.containerColorsList.length];
+
                 //height 147.h
                 return GestureDetector(
                   onTap: () {
                     //キーボードをunFocus
                     FocusManager.instance.primaryFocus?.unfocus();
                     GitHubBottomSheet.show(
-                        context, backgroundColor, githubTiles[index], isDark);
+                      context,
+                      backgroundColor,
+                      githubTiles[index],
+                      isDark,
+                    );
                   },
                   child: GitHubBox(
                     isDark: isDark,

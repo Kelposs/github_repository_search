@@ -12,5 +12,3 @@ export 'package:github_repository_search/src/features/theme/domain/app_style.dar
 export 'package:github_repository_search/src/features/theme/domain/app_theme.dart';
 export "package:github_repository_search/src/routing/app_router.dart";
 export 'package:github_repository_search/src/routing/app_routes.dart';
-// export 'package:business_card/src/utils/error/business_card_error.dart';
-// export 'package:business_card/src/utils/error/business_card_exception.dart';
